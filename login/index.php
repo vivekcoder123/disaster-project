@@ -1,4 +1,37 @@
 <?php include "../includes/db.php"; ?>
+<?php    
+if(isset($_POST['login']))
+{
+    $username_mail=trim($_POST['mail']);
+    $username_mail=mysqli_real_escape_string($connection,$username_mail);
+    
+    $password=trim($_POST['pass']);
+    $password=mysqli_real_escape_string($connection,$password);
+    
+    $position=trim($_POST['position']);
+	$position=mysqli_real_escape_string($connection,$position);
+    
+    $query=mysqli_query($connection,"SELECT * from users where (username='$username_mail' or email='$username_mail') and password='$password' and position='$position'");
+    
+    if(!$query)
+    {
+        echo ("connection error" .mysqli_error($connection));
+    }
+    $result=mysqli_num_rows($query);
+         if($result==1)
+           {
+            $row=mysqli_fetch_assoc($query);
+            $_SESSION['username']=$row['username'];
+            header("Location:../");
+           }
+        else
+          {
+          header("Location:../login/");
+          }
+    
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +66,7 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="post">
 
           <a href="#" class="btn btn-block btn-danger p-3" style="border-radius:50%;">LOGIN AS VICTIM</a>
             <div class="text-center font-weight-bold mt-3">
@@ -47,16 +80,15 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<label for="" class="alert alert-primary font-weight-bold">LOGIN AS</label>
-						<select class="form-control text-center text-secondary font-weight-bold" name="">
-							<option value="">Helper</option>
-							<option value="">Administrator</option>
+						<select class="form-control text-center text-secondary font-weight-bold" name="position">
+							<option value="helper">Helper</option>
+							<option value="administrator">Administrator</option>
 						</select>
 
 					</div>
 					<br>
-
 					<div class="wrap-input100 validate-input" data-validate = "Username/Email is required">
-						<input class="input100" type="text" name="pass" placeholder="Enter Username or Email">
+						<input class="input100" type="text" name="mail" placeholder="Enter Username or Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -72,7 +104,7 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" name="login">
 							Login
 						</button>
 					</div>
@@ -110,9 +142,8 @@
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
-	</script>
+    </script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
 </body>
 </html>
