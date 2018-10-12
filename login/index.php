@@ -1,3 +1,5 @@
+<?php include "../includes/db.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +46,7 @@
 					</h4> -->
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<label for="" class="text-primary font-weight-bold">LOGIN AS</label>
+						<label for="" class="alert alert-primary font-weight-bold">LOGIN AS</label>
 						<select class="form-control text-center text-secondary font-weight-bold" name="">
 							<option value="">Helper</option>
 							<option value="">Administrator</option>
@@ -76,10 +78,10 @@
 					</div>
 
 
-					<div class="pt-3 text-center">
+					<div class="pt-3 ml-5 pl-4">
 
 						<span class="">Account Not Created Yet?</span>
-						<a class="btn btn-primary" style="border-radius:10px;" href="#">
+						<a class="btn btn-block btn-primary" style="border-radius:10px;" href="../register">
 							<span class="text-light">Create Your Account</span>
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 
