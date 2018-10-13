@@ -42,7 +42,7 @@ if(isset($_POST['login']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
+	<title>Login Page</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -73,8 +73,8 @@ if(isset($_POST['login']))
 				</div>
 
 				<form class="login100-form validate-form" method="post">
-
-          <a href="#" class="btn btn-block btn-danger p-3" style="border-radius:50%;">LOGIN AS VICTIM</a>
+          <a href="../victim" class="btn btn-block btn-danger p-3" style="border-radius:50%;">LOGIN AS VICTIM</a>
+          <span class="small text-danger">*victim can login directly without creating any account</span>
             <div class="text-center font-weight-bold mt-3">
             	OR
             </div>
@@ -83,7 +83,6 @@ if(isset($_POST['login']))
 					<!-- <h4 class="text-center font-weight-bold">
 						Helper/Administrator Login
 					</h4> -->
-
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<label for="" class="alert alert-primary font-weight-bold">LOGIN AS</label>
 						<select class="form-control text-center text-secondary font-weight-bold" name="position">
