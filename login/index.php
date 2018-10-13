@@ -1,18 +1,18 @@
 <?php include "../includes/db.php"; ?>
-<?php    
+<?php
 if(isset($_POST['login']))
 {
     $username_mail=trim($_POST['mail']);
     $username_mail=mysqli_real_escape_string($connection,$username_mail);
-    
+
     $password=trim($_POST['pass']);
     $password=mysqli_real_escape_string($connection,$password);
-    
-    $position=trim($_POST['position']);
+
+  $position=trim($_POST['position']);
 	$position=mysqli_real_escape_string($connection,$position);
-    
+
     $query=mysqli_query($connection,"SELECT * from users where (username='$username_mail' or email='$username_mail') and password='$password' and position='$position'");
-    
+
     if(!$query)
     {
         echo ("connection error" .mysqli_error($connection));
@@ -20,15 +20,21 @@ if(isset($_POST['login']))
     $result=mysqli_num_rows($query);
          if($result==1)
            {
-            $row=mysqli_fetch_assoc($query);
+            $row=mysqli_fetch_array($query);
             $_SESSION['username']=$row['username'];
-            header("Location:../");
+            unset($_SESSION['login_error']);
+            if($position=="administrator"){
+              header("Location:../admin");
+            }else{
+              header("Location:../helper");
+            }
            }
         else
           {
+          $_SESSION['login_error']="<h5 class='text-danger'>Please enter correct credentials</h5>";
           header("Location:../login/");
           }
-    
+
 }
 
 ?>
@@ -104,6 +110,12 @@ if(isset($_POST['login']))
 					</div>
 
 					<div class="container-login100-form-btn">
+            <?php
+            if(isset($_SESSION['login_error'])){
+  							echo $_SESSION['login_error'];
+  						}
+            ?>
+
 						<button class="login100-form-btn" name="login">
 							Login
 						</button>
