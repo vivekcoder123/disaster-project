@@ -47,7 +47,6 @@ if(isset($_POST['donate'])){
    <head>
      <meta charset="utf-8">
      <title>Donation</title>
-   </head>
      <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="../../extras/bootstrap.min.css">
@@ -91,7 +90,7 @@ if(isset($_POST['donate'])){
     </div>
     <div class="form-group text-primary offset-md-4 col-md-4">
       <label for="note">Remarks:</label>
-    <textarea type="text" role="5" name="notes" class="form-control" placeholder="Enter Remarks (Optional)...."></textarea>
+    <textarea type="text" row="5" name="notes" class="form-control" placeholder="Enter Remarks (Optional)...."></textarea>
       </div>
       <div class="text-center">
     <button type="submit" class="btn btn-success" name="donate">Donate</button>

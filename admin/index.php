@@ -27,7 +27,8 @@ if(!isset($_SESSION['username'])){
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
-      </button>
+
+            </button>
 
 
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -36,12 +37,11 @@ if(!isset($_SESSION['username'])){
         </ul>
       </div>
      </nav>
-
      <div class="container mt-5 pt-5">
-      <div class="btn btn-primary btn-block col-md-4 offset-md-4 p-4 font-weight-bold animated bounceInDown">DONATIONS</div>
+     <a  href="donation/" class="btn btn-primary btn-block col-md-4 offset-md-4 p-4 font-weight-bold animated bounceInDown">DONATIONS</a>
       <br>
       <div class="form-inline">
-        <a href="#" class="col-md-4 btn btn-warning mb-4 p-4 font-weight-bold animated bounceInLeft">CAMPAIGNS</a>
+        <a href="compaigns/" class="col-md-4 btn btn-warning mb-4 p-4 font-weight-bold animated bounceInLeft">CAMPAIGNS</a>
 
         <a href="#" class="col-md-4 btn btn-danger offset-md-4 mb-4 p-4 font-weight-bold animated bounceInRight">HELP STATUS</a>
         <br>
