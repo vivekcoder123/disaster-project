@@ -1,4 +1,13 @@
 <?php include "../../includes/db.php"?>
+
+<?php
+
+if(!isset($_SESSION['username'])){
+  header("Location:../../login");
+}
+
+ ?>
+
 <!DOCTYPE html>
  <html lang="en" dir="ltr">
    <head>
@@ -19,11 +28,12 @@
        </button>
        <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav text-center ml-auto">
+          <li class="nav-item btn btn-dark mr-4"><a class="text-light" href="../">Admin Home</a></li>
           <li class="nav-item"><a href="../" class="btn btn-danger">Log Out</a></li>
         </ul>
        </div>
      </nav>
-     
+
      <div class="table-responsive-md mt-5 p-5">
          <table class="table table-bordered text-center">
              <thead>
@@ -42,11 +52,11 @@
                      </th>
                      <th>
                          Donation_remark
-                     </th>   
+                     </th>
                  </tr>
              </thead>
              <tbody>
-                 <?php 
+                 <?php
                  $select=mysqli_query($connection,"SELECT * FROM `donation`");
                  while($row=mysqli_fetch_assoc($select))
                  {

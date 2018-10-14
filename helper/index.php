@@ -14,9 +14,10 @@ if(!isset($_SESSION['username'])){
    <link rel="stylesheet" href="../extras/bootstrap.min.css">
   <script src="../extras/jquery.min.js"></script>
   <script src="../extras/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../extras/animate.min.css">
    </head>
     <body>
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark ">
 
        <a class="navbar-brand" href="#">Welcome <span class="text-primary font-weight-bold"><?php echo $_SESSION['username']; ?></span></a>
 

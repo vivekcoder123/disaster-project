@@ -1,5 +1,10 @@
 <?php include "../../includes/db.php"?>
 <?php
+
+if(!isset($_SESSION['username'])){
+  header("Location:../../login");
+}
+
 if(isset($_GET['id']))
 {
     $id=$_GET['id'];
@@ -11,7 +16,7 @@ if(isset($_GET['id']))
  <html lang="en">
    <head>
      <meta charset="utf-8">
-     <title>Compaigns Page</title>
+     <title>Campaigns Page</title>
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="../../extras/bootstrap.min.css">
      <link rel="stylesheet" href="../../extras/animate.min.css">
@@ -20,13 +25,14 @@ if(isset($_GET['id']))
    </head>
    <body>
 
-     <nav class="navbar navbar-expand-md bg-info navbar-dark">
-       <a class="navbar-brand" href="#">Compaigns</a>
+     <nav class="navbar navbar-expand-md bg-warning navbar-dark">
+       <a class="navbar-brand text-dark font-weight-bold" href="#">Campaigns</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
        </button>
        <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav text-center ml-auto">
+          <li class="nav-item btn btn-dark mr-4"><a class="text-light" href="../">Admin Home</a></li>
           <li class="nav-item"><a href="../" class="btn btn-danger">Log Out</a></li>
         </ul>
        </div>
@@ -34,7 +40,7 @@ if(isset($_GET['id']))
       <div class="container pt-4">
       <br>
       <div class="form-inline">
-        <a href="../add_compaign/" class="col-md-4 btn btn-warning mb-4 p-4  offset-md-3 font-weight-bold animated bounceInLeft"> ADD CAMPAIGNS</a>
+        <a href="../add_compaign/" class="col-md-4 btn btn-warning mb-4 offset-md-4 font-weight-bold animated bounceInLeft"> ADD CAMPAIGNS</a>
         <br>
       </div>
         <div class="table-responsive-md mt-3">
@@ -52,11 +58,11 @@ if(isset($_GET['id']))
                      </th>
                      <th>
                          Compaign_image
-                     </th>   
+                     </th>
                  </tr>
              </thead>
              <tbody>
-                 <?php 
+                 <?php
                  $select=mysqli_query($connection,"SELECT * FROM `compaign`");
                  while($row=mysqli_fetch_assoc($select))
                  {

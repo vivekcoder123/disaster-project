@@ -20,7 +20,7 @@ if(isset($_POST['help_submit'])){
 
   $help_id=substr($name,0,4).mt_rand(10000,100000);
 
-  $insert_victims=mysqli_query($connection,"INSERT into victims()VALUES('','$name','$phone','$location','$victims_count','$problems','$help_id')");
+  $insert_victims=mysqli_query($connection,"INSERT into victims()VALUES('','$name','$phone','$location','$victims_count','$problems','$help_id','Not completed')");
   if(!$insert_victims){
     die("Connection Error".mysqli_error($connection));
   }

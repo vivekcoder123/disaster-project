@@ -43,7 +43,7 @@ if(!isset($_SESSION['username'])){
       <div class="form-inline">
         <a href="compaigns/" class="col-md-4 btn btn-warning mb-4 p-4 font-weight-bold animated bounceInLeft">CAMPAIGNS</a>
 
-        <a href="#" class="col-md-4 btn btn-danger offset-md-4 mb-4 p-4 font-weight-bold animated bounceInRight">HELP STATUS</a>
+        <a href="victim_status" class="col-md-4 btn btn-danger offset-md-4 mb-4 p-4 font-weight-bold animated bounceInRight">VICTIMS STATUS</a>
         <br>
       </div>
 
