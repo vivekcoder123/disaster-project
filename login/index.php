@@ -8,10 +8,9 @@ if(isset($_POST['login']))
     $password=trim($_POST['pass']);
     $password=mysqli_real_escape_string($connection,$password);
 
-  $position=trim($_POST['position']);
-	$position=mysqli_real_escape_string($connection,$position);
+    $position=$_POST['position'];
 
-    $query=mysqli_query($connection,"SELECT * from users where (username='$username_mail' or email='$username_mail') and password='$password' and position='$position'");
+    $query=mysqli_query($connection,"SELECT * from users WHERE (username='$username_mail' or email='$username_mail') and password='$password' and position='$position' ");
 
     if(!$query)
     {
@@ -23,10 +22,10 @@ if(isset($_POST['login']))
             $row=mysqli_fetch_array($query);
             $_SESSION['username']=$row['username'];
             unset($_SESSION['login_error']);
-            if($position=="administrator"){
-              header("Location:../admin");
-            }else{
+            if($position=="helper"){
               header("Location:../helper");
+            }else{
+              header("Location:../admin");
             }
            }
         else

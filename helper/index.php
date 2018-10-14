@@ -1,4 +1,11 @@
 <?php include "../includes/db.php"; ?>
+<?php
+
+if(!isset($_SESSION['username'])){
+  header("Location:../login");
+}
+
+ ?>
    <!doctype html>
    <html>
    <head>
@@ -9,35 +16,48 @@
   <script src="../extras/bootstrap.min.js"></script>
    </head>
     <body>
-    <nav class="navbar navbar-expand-md bg-dark navbar-light fixed-top">
-      <form class="form-inline">
-       <a  href="#" class="btn btn-success form-contol ml-5">Compaign</a>
-       <a  href="#" class="btn btn-primary form-contol ml-3">reports</a>
-        </form>    
-    </nav>
-         
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+       <a class="navbar-brand" href="#">Welcome <span class="text-primary font-weight-bold"><?php echo $_SESSION['username']; ?></span></a>
+
+
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+
+
+       <div class="collapse navbar-collapse" id="collapsibleNavbar">
+         <ul class="navbar-nav text-center ml-auto text-light">
+          <li class="nav-item"><a href="../helper" class="btn btn-dark active">CAMPAIGNS</a></li>
+          <li class="nav-item"><a href="#" class="btn btn-dark">DONATIONS</a></li>
+          <li class="nav-item"><a class="btn btn-dark mr-2">REPORTS</a></li>
+          <a href="../logout.php" class="btn btn-danger">Log Out</a>
+         </ul>
+       </div>
+      </nav>
+
           <br><br>
-             <div class="container">
-               <div class="row mt-1">
-                 <?php 
-                    $query=mysqli_query($connection,"SELECT * FROM `compaign`");
-                       while($row=mysqli_fetch_assoc($query))
+             <div class="container mt-4">
+               <h4 class="text-center font-weight-bold"><u class="text-danger">Donate For Campaigns for Helping People</u></h4>
+               <div class="row m-2">
+                 <?php
+                    $query=mysqli_query($connection,"SELECT * FROM compaign");
+                       while($row=mysqli_fetch_array($query))
                           {
                              $compaign_id=$row['compaign_id'];
                              $title=$row['title'];
-                             $month=$row['month'];
-                             $year=$row['year'];
-                             $image=$row['image'];           
+                             $date=$row['date'];
+                             $image=$row['image'];
                   ?>
                  <div class="col-md-4">
-                  <a href="../helper/donation/?id=<?php echo $compaign_id ?>">
+                  <a href="donation/?id=<?php echo $compaign_id ?>">
                     <div class="card m-3" style="width:100%">
                       <div class="card-header text-center">
-                        <h2 class="card-title">
-                           <h3 class="text-secondary"><?php echo $title ?>,<?php echo $month;?><?php echo"";?><?php echo $year;?></h3>
-                        </h2>
+
+                      <h5 class="text-secondary"><?php echo $title ?> , <?php echo $date;?></h3>
+
                       </div>
-                       
+
                            <img class="" src="../images/<?php echo $image;?>" alt="This is an image" style="width:100%;">
                           <br>
                       </div>
@@ -46,8 +66,8 @@
                 <?php } ?>
             </div>
         </div>
-           
-     
+
+
 
                 </body>
                 </html>
